@@ -28,7 +28,12 @@ current_date_time=$(date +"%Y-%m-%d_%H:%M:%S")
 
 file_name=$(basename "$input_url")
 extension="${input_url##*.}"
-output_file_name="${current_date_time}_${file_name%.*}.$extension.mp4"
+if [ -z "$extension" ]; then
+    extension="mp4"
+fi
+	file_name="$file_name.$extension"
+
+output_file_name="${current_date_time}_${file_name%.*}.mp4"
 
 ffmpeg -i "$input_url" -acodec copy -vcodec copy -threads 32 "$output_path$output_file_name"
 ```
