@@ -19,6 +19,7 @@ ln -s /sdcard storage
 ## 脚本
 * 下面是一个示例脚本，它接受一个参数，即输入文件的网络地址，并使用该地址下载文件。
 * 使用了basename命令来获取输入文件的网络地址中的文件名，并将其用作输出文件的名称。
+* 使用判断语句`if [ -z "$extension" ]; then`来检查变量extension是否为空。
 ```bash
 input_url=$1
 output_path="/sdcard/Download/"
