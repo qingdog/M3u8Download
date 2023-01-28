@@ -20,8 +20,6 @@ ln -s /sdcard storage
 * 下面是一个示例脚本，它接受一个参数，即输入文件的网络地址，并使用该地址下载文件。
 * 使用了basename命令来获取输入文件的网络地址中的文件名，并将其用作输出文件的名称。
 ```bash
-#!/bin/bash
-
 input_url=$1
 output_path="/sdcard/Download/"
 current_date_time=$(date +"%Y-%m-%d_%H:%M:%S")
@@ -29,9 +27,9 @@ current_date_time=$(date +"%Y-%m-%d_%H:%M:%S")
 file_name=$(basename "$input_url")
 extension="${input_url##*.}"
 if [ -z "$extension" ]; then
-    extension="mp4"
+    file_name="$file_name"
 fi
-	file_name="$file_name.$extension"
+    file_name="$file_name.$extension"
 
 output_file_name="${current_date_time}_${file_name%.*}.mp4"
 
