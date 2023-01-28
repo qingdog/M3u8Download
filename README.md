@@ -1,4 +1,4 @@
-## branch
+## ffmpeg
 * 使用 ffmpeg 命令来下载和转换 m3u8 格式视频
 ```sh
 ffmpeg -acodec copy -vcodec copy -threads 32 "/sdcard/Download/`date +%Y-%m-%d_%H-%M-%S`_m3u8.mp4" -i "https://www.hfyrw.com/Cache/68f72049e32321f85ce506431caddfe6.m3u8"
@@ -46,6 +46,11 @@ ffmpeg -i "$input_url" -acodec copy -vcodec copy -threads 4 "$output_path`date +
 sh script.sh https://www.hfyrw.com/Cache/68f72049e32321f85ce506431caddfe6.m3u8
 ```
 * 请注意，需要给这个脚本加上可执行权限（例如 chmod +x script.sh）
+
+## 哔哩哔哩安卓端下载视频合并成MP4
+```sh
+ffmpeg -i video.m4s -i audio.m4s -codec copy bili.mp4
+```
 
 ## start
 * 由于Python以及ffmpeg的强大，此脚本可以跨平台Windows、Mac OS、Linux、Android等
