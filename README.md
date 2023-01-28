@@ -18,13 +18,18 @@ ln -s /sdcard storage
 
 ## 脚本
 * 下面是一个示例脚本，它接受一个参数，即输入文件的网络地址，并使用该地址下载文件。
+* 使用了basename命令来获取输入文件的网络地址中的文件名，并将其用作输出文件的名称。
 ```bash
 #!/bin/bash
 
 input_url=$1
 output_path="/sdcard/Download/"
+current_date_time=$(date +"%Y-%m-%d_%H-%M-%S")
 
-ffmpeg -i "$input_url" -acodec copy -vcodec copy -threads 4 "$output_path`date +%Y-%m-%d_%H-%M-%S`_m3u8.mp4"
+file_name=$(basename "$input_url")
+output_file_name="$current_date_time)_${file_name%.*}.mp4"
+
+ffmpeg -i "$input_url" -acodec copy -vcodec copy -threads 32 "$output_path$output_file_name"
 ```
 
 ```sh
