@@ -24,10 +24,11 @@ ln -s /sdcard storage
 
 input_url=$1
 output_path="/sdcard/Download/"
-current_date_time=$(date +"%Y-%m-%d_%H-%M-%S")
+current_date_time=$(date +"%Y-%m-%d_%H:%M:%S")
 
 file_name=$(basename "$input_url")
-output_file_name="$current_date_time)_${file_name%.*}.mp4"
+extension="${input_url##*.}"
+output_file_name="${current_date_time}_${file_name%.*}.$extension.mp4"
 
 ffmpeg -i "$input_url" -acodec copy -vcodec copy -threads 32 "$output_path$output_file_name"
 ```
