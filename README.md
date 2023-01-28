@@ -39,8 +39,7 @@ echo '#!/bin/bash
 input_url=$1
 output_path="/sdcard/Download/"
 
-ffmpeg -i "$input_url" -acodec copy -vcodec copy -threads 4 "$output_path`date +%Y-%m-%d_%H-%M-%S`_m3u8.mp4"'
->> script.sh
+ffmpeg -i "$input_url" -acodec copy -vcodec copy -threads 4 "$output_path`date +%Y-%m-%d_%H-%M-%S`_m3u8.mp4"' >> script.sh
 ```
 
 * 使用这个脚本时，可以将网络地址作为第一个参数传入，如下所示：
