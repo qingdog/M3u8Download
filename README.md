@@ -1,3 +1,35 @@
+## branch
+* 使用 ffmpeg 命令来下载和转换 m3u8 格式视频
+```sh
+ffmpeg -acodec copy -vcodec copy -threads 32 "/sdcard/Download/`date +%Y-%m-%d_%H-%M-%S`_m3u8.mp4" -i "https://www.hfyrw.com/Cache/68f72049e32321f85ce506431caddfe6.m3u8"
+```
+* -i 参数指定了输入文件的位置，在这里是一个网络地址。
+* -acodec copy 和 -vcodec copy 参数分别指定音频和视频的编码格式，这里都是 copy，意味着不进行编码转换，而是直接拷贝原始编码。
+* -threads 参数指定线程数。如果不指定线程数，ffmpeg 默认会使用单线程。注意，多线程下载可能会增加带宽占用和服务器负载，请注意使用线程数的限制。
+* 上面的命令使用了 /path/to/save/ 来指定下载路径，并将文件保存在该路径下。请确保该路径存在且有写入权限。
+* 上面的命令使用了 date +%Y-%m-%d_%H-%M-%S 来获取当前日期和时间，并将其作为文件名的一部分。这里的 %Y表示年份，%m表示月份，%d表示日期，%H表示小时,%M表示分钟，%S表示秒。
+* 请注意，这只是在linux系统下的写法，对于其他系统的命令可能会有不同。
+
+## 软连接
+```sh
+ln -s /sdcard/Download Download
+ln -s /sdcard storage
+```
+
+## start
+* 由于Python以及ffmpeg的强大，此脚本可以跨平台Windows、Mac OS、Linux、Android等
+* 依赖 ffmpeg Python3.6+ requests库
+* 在termux下安装三个依赖
+```sh
+pkg install ffmpeg
+```
+```sh
+pkg install python
+```
+```sh
+pip install requests
+```
+
 ## HELLO
     我想要🌟🌟，你可以给我点亮它吗
 
