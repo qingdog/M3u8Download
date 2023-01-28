@@ -22,7 +22,7 @@ ln -s /sdcard storage
 #!/bin/bash
 
 input_url=$1
-output_path="/path/to/save/"
+output_path="/sdcard/Download/"
 
 ffmpeg -i "$input_url" -acodec copy -vcodec copy -threads 4 "$output_path`date +%Y-%m-%d_%H-%M-%S`_m3u8.mp4"
 ```
@@ -32,7 +32,7 @@ touch script.sh
 echo '#!/bin/bash
 
 input_url=$1
-output_path="/path/to/save/"
+output_path="/sdcard/Download/"
 
 ffmpeg -i "$input_url" -acodec copy -vcodec copy -threads 4 "$output_path`date +%Y-%m-%d_%H-%M-%S`_m3u8.mp4"'
 >> script.sh
