@@ -16,6 +16,25 @@ ln -s /sdcard/Download Download
 ln -s /sdcard storage
 ```
 
+## 脚本
+* 下面是一个示例脚本，它接受一个参数，即输入文件的网络地址，并使用该地址下载文件。
+```bash
+#!/bin/bash
+
+input_url=$1
+output_path="/path/to/save/"
+
+ffmpeg -i "$input_url" -acodec copy -vcodec copy -threads 4 "$output_path`date +%Y-%m-%d_%H-%M-%S`_m3u8.mp4"
+```
+* 使用这个脚本时，可以将网络地址作为第一个参数传入，如下所示：
+```bash
+./script.sh "https://www.hfyrw.com/Cache/68f72049e32321f85ce506431caddfe6.m3u8"
+```
+```bash
+sh script.sh https://www.hfyrw.com/Cache/68f72049e32321f85ce506431caddfe6.m3u8
+```
+* 请注意，需要给这个脚本加上可执行权限（例如 chmod +x script.sh）
+
 ## start
 * 由于Python以及ffmpeg的强大，此脚本可以跨平台Windows、Mac OS、Linux、Android等
 * 依赖 ffmpeg Python3.6+ requests库
